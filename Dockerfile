@@ -1,6 +1,11 @@
 FROM node:18-alpine
 
-COPY ./ ./
-RUN npm install
+WORKDIR /usr/app
 
+# install dependencies
+COPY ./package.json ./
+RUN npm install
+COPY ./ ./
+
+#Default command
 CMD [ "npm","start" ]
